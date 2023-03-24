@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid gray;
+}
+.notification {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    
+}
+[data-mounted="true"] {
+    display: none;
+}
+[data-mounted="false"] {
+    background-color: blue;    
+}

@@ -9,3 +9,4 @@
 2) install react-router-dom and configure App.js with routes. Create Home
 3) install and configure Redux (we need a global state since we have to store a list of podcasts and details for as much as 24h)
 4) create action to fetch data
+5) add common header and flag to know when navigation is done
