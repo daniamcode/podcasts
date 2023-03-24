@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <div className='header'>
-      <Link to='/'>HOME</Link>
+      <Link to='/' className='header-title'>Podcaster</Link>
       <div className='notification' data-mounted={mounted}></div>
     </div>
   );

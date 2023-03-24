@@ -13,3 +13,4 @@
 6) add podcasts component and routes
 7) add a timer to fetch data just if 24h have passed since the initial request
 8) add episodes component and routes
+9) add listElement component ad styles to home

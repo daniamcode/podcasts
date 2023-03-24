@@ -5,6 +5,11 @@
     padding: 15px;
     border-bottom: 1px solid gray;
 }
+.header-title {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+}
 .notification {
     height: 10px;
     width: 10px;

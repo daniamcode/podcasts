@@ -2,8 +2,7 @@ import "../styles/Home.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { loadPodcasts } from "../redux/actions/podcastActions";
-import { Link } from "react-router-dom";
-
+import ListElement from "./ListElement";
 
 function Home() {
     const dispatch = useDispatch()
@@ -23,8 +22,7 @@ function Home() {
         <div className='home'>
             {podcasts?.podcastsList?.isLoading 
                 ? <h3>Is loading...</h3> 
-                : podcasts?.podcastsList?.response?.map(pod=>
-                    <Link to={`/podcast/${pod.id.attributes['im:id']}`} key={pod.id.attributes['im:id']}>{pod.title.label}</Link>)
+                : podcasts?.podcastsList?.response?.map(podcast => <ListElement podcast={podcast}/>)
             }
         </div>
     )
