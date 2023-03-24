@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import "../styles/Podcasts.css";
 
 function EpisodesList({podcasts, podcastIndex, podcastId}) {
-  const episodeId = 44
-
   function formatTime(timestamp) {
     const date = new Date(timestamp);
     const minutes = date.getUTCMinutes();
@@ -33,10 +31,10 @@ function EpisodesList({podcasts, podcastIndex, podcastId}) {
         </div>
       </div>
 
-      {podcasts?.podcastsDetails[podcastIndex]?.response?.map(episode=>(
+      {podcasts?.podcastsDetails[podcastIndex]?.response?.map(episode => (
 
         <div className="episodes-list-item">
-          <Link to={`/podcast/${podcastId}/episode/${episodeId}`} className="trackname">{episode.trackName}</Link>        
+          <Link to={`/podcast/${podcastId}/episode/${episode.episodeGuid}`} className="trackname">{episode.trackName}</Link>        
           <div className="release-date">
             {formatDate(episode.releaseDate)}
           </div>

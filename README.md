@@ -19,3 +19,4 @@ https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpis
 I ASSUME THE FIRST RESULT IS THE DETAIL FOR THE PODCAST AND THE FOLLOWING ONES ARE EPISODES
 11) add styles to individual podcasts
 12) add Sidebar that will be common for podcasts and episodes
+13) add episode details
