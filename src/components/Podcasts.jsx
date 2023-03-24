@@ -1,11 +1,12 @@
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 
 function Podcasts() {
   const { podcastId } = useParams();
+  const episodeId = 44
   
   return (
     <div>
-      <h1>{podcastId}</h1>      
+      <Link to={`/podcast/${podcastId}/episode/${episodeId}`}>{podcastId}</Link>      
     </div>
   );
 }
