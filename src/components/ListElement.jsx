@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
 export default function ListElement({podcast}) {
-    console.log(podcast)
-    debugger
     return(
         <div className="list-element" key={podcast.id.attributes['im:id']}>
             <Link to={`/podcast/${podcast.id.attributes['im:id']}`} >

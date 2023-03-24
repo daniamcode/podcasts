@@ -1,0 +1,18 @@
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    gap: 10rem;
+    height: 100%;
+    margin: 3rem;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    padding: 2rem;
+}
+.podcast-cover {
+    width: 100%;
+}

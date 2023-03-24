@@ -1,0 +1,34 @@
+.episodes-list {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    height: fit-content;
+}
+.episodes-list-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+}
+.episodes-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.episodes-list-item:nth-child(even) {
+    background-color: #eee;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.trackname {
+    width: 20rem;
+    overflow: auto;
+    padding: 0 5px;
+}
+.release-date {
+    width: 10rem;
+    overflow: auto;
+}

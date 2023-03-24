@@ -1,12 +1,48 @@
-import {Link, useParams} from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { loadPodcastsDetails } from '../redux/actions/podcastActions';
+import Dashboard from './Dashboard';
+import EpisodesList from './EpisodesList';
+import "../styles/Podcasts.css";
 
 function Podcasts() {
   const { podcastId } = useParams();
-  const episodeId = 44
+
+  const dispatch = useDispatch()
+  const { podcasts, timer } = useSelector(state=>state)
+  const [mountedDate] = useState(Date.now())
+  const [podcastIndex, setPodcastIndex] = useState(null)
+
+  console.log(podcasts?.podcastsDetails[podcastIndex]?.response)
+
+  useEffect(()=> {
+    setPodcastIndex(podcasts?.podcastsDetails?.findIndex(el => el?.id === podcastId))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [podcastId, JSON.stringify(podcasts?.podcastsDetails)])
+
+  useEffect(()=> {
+    // only dispatch the first time and then just if coming back after timer.period 
+    if(podcastIndex === -1 || (mountedDate > (timer.period + podcasts?.podcastsDetails[podcastIndex]?.timestamp))) {
+      dispatch(loadPodcastsDetails({podcastId}))
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, mountedDate, podcastIndex, JSON.stringify([timer.period, podcasts?.podcastsDetails[podcastIndex]?.response, podcasts?.podcastsDetails[podcastIndex]?.timestamp])])
+
   
   return (
-    <div>
-      <Link to={`/podcast/${podcastId}/episode/${episodeId}`}>{podcastId}</Link>      
+    <div className='podcasts'>
+      <Dashboard
+        podcastId={podcastId}
+        podcasts={podcasts} 
+        podcastIndex={podcastIndex}
+        >
+        <EpisodesList
+          podcastId={podcastId}
+          podcasts={podcasts} 
+          podcastIndex={podcastIndex}
+        />
+      </Dashboard>
     </div>
   );
 }
