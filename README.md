@@ -11,3 +11,4 @@
 4) create action to fetch data
 5) add common header and flag to know when navigation is done
 6) add podcasts component and routes
+7) add a timer to fetch data just if 24h have passed since the initial request
