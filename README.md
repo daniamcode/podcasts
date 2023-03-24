@@ -14,3 +14,8 @@
 7) add a timer to fetch data just if 24h have passed since the initial request
 8) add episodes component and routes
 9) add listElement component ad styles to home
+10) fetch timed data for individual podcasts. THE GIVEN URL IS INCORRECT, SO I FOUND:
+https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=10
+I ASSUME THE FIRST RESULT IS THE DETAIL FOR THE PODCAST AND THE FOLLOWING ONES ARE EPISODES
+11) add styles to individual podcasts
+12) add Sidebar that will be common for podcasts and episodes
