@@ -18,32 +18,36 @@ function EpisodesList({podcasts, podcastIndex, podcastId}) {
   }
 
   return (
-    <div className='episodes-list'>
-      <div className="episodes-list-header">
-        <p className="trackname">
-          Title
-        </p>
-        <div className="release-date">
-          Date
-        </div>
-        <div>
-          Duration
-        </div>
+    <div className="episodes-list-container">
+      <div className="episodes-counter">
+        {`Episodes: ${podcasts?.podcastsDetails[podcastIndex]?.response?.slice(1).length}`}
       </div>
-
-      {podcasts?.podcastsDetails[podcastIndex]?.response?.map(episode => (
-
-        <div className="episodes-list-item">
-          <Link to={`/podcast/${podcastId}/episode/${episode.episodeGuid}`} className="trackname">{episode.trackName}</Link>        
+      <div className='episodes-list'>
+        <div className="episodes-list-header">
+          <p className="trackname">
+            Title
+          </p>
           <div className="release-date">
-            {formatDate(episode.releaseDate)}
+            Date
           </div>
           <div>
-            {formatTime(episode.trackTimeMillis)}
+            Duration
           </div>
         </div>
-      )
-      )}      
+
+        {podcasts?.podcastsDetails[podcastIndex]?.response?.slice(1).map(episode => (
+          <div className="episodes-list-item" key={episode.trackId}>
+            <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`} className="trackname">{episode.trackName}</Link>        
+            <div className="release-date">
+              {formatDate(episode.releaseDate)}
+            </div>
+            <div>
+              {formatTime(episode.trackTimeMillis)}
+            </div>
+          </div>
+        )
+        )}      
+      </div>
     </div>
   );
 }
