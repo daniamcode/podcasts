@@ -14,8 +14,6 @@ function Episode() {
   const [mountedDate] = useState(Date.now())
   const [podcastIndex, setPodcastIndex] = useState(null)
 
-  console.log(podcasts?.podcastsDetails[podcastIndex]?.response)
-
   useEffect(() => {
     dispatch(setFlag(false))
     return ()=> {

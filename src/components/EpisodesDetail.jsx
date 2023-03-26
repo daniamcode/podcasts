@@ -8,8 +8,6 @@ function EpisodesDetail({podcasts, podcastIndex}) {
   const { episodeId } = useParams();
   const [selectedEpisode, setSelectedEpisode] = useState(null)
 
-  console.log(selectedEpisode)
-
   useEffect(()=> {
       const episode = podcasts?.podcastsDetails[podcastIndex]?.response?.find(el=>el.trackId.toString() === episodeId)
       setSelectedEpisode(episode)
