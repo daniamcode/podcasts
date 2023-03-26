@@ -1,4 +1,5 @@
 import actionTypes from '../actions/actionTypes';
+import { cloneDeep } from 'lodash';
 
 const INITIAL = {podcastsList: {isLoading: false, error: false}, podcastsDetails: []}
 
@@ -11,7 +12,7 @@ const podcasts = (state = INITIAL, action = {}) => {
       }
     case actionTypes.LOAD_PODCASTS_DETAILS:
       // const newState = structuredClone(state) // fails 
-      const newState = {...state} // todo: use lodash' clonedeep
+      const newState = cloneDeep(state)
       const newPodcastsDetailsIndex = newState?.podcastsDetails?.findIndex(el => el?.id === action?.payload?.id)
       if(newPodcastsDetailsIndex && newPodcastsDetailsIndex !== -1) {
         newState.podcastsDetails[newPodcastsDetailsIndex] = action?.payload
