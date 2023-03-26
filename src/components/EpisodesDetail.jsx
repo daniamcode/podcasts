@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/Header.css";
+import "../styles/Episodes.css";
+import Linkify from 'react-linkify';
 
 function EpisodesDetail({podcasts, podcastIndex}) {
 
@@ -10,16 +11,20 @@ function EpisodesDetail({podcasts, podcastIndex}) {
   console.log(selectedEpisode)
 
   useEffect(()=> {
-      const episode = podcasts?.podcastsDetails[podcastIndex]?.response?.find(el=>el.episodeGuid === episodeId)
+      const episode = podcasts?.podcastsDetails[podcastIndex]?.response?.find(el=>el.trackId.toString() === episodeId)
       setSelectedEpisode(episode)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify([episodeId, podcastIndex, podcasts?.podcastsDetails[podcastIndex]])])
 
   return (
     <div className='episodes-detail'>
-      {selectedEpisode?.trackName}
-      {selectedEpisode?.description}
-      <audio src={selectedEpisode?.episodeUrl} controls>
+      <div className="episodes-detail-trackname">
+        {selectedEpisode?.trackName}
+      </div>
+      <div className='episodes-detail-description'>
+        <Linkify>{selectedEpisode?.description}</Linkify>
+      </div>
+      <audio src={selectedEpisode?.episodeUrl} controls className="episodes-detail-audio">
       Your browser does not support the <code>audio</code> element.
       </audio>
     </div>
