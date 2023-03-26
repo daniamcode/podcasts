@@ -10,21 +10,35 @@ export const loadPodcasts = () => {
       }
     })      
     try {
-      const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')}`);
-      if (!response.ok) {
-        const errorResponse = await response.text();
-        throw new Error(errorResponse);
-      }
-      const data = await response.json();
-      dispatch({
-        type: actionTypes.LOAD_PODCASTS,
-        payload: {
-          response: data?.feed?.entry,
-          isLoading: false,
-          isError: false,
-          timestamp: Date.now(),
-        },
-      })
+      fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')}`)
+        .then(response => {
+          if (response.ok) return response.json()
+          isLoading = false
+          console.error(response)
+          
+          dispatch({
+            type: actionTypes.LOAD_PODCASTS,
+            payload: {
+                error: response,
+                isLoading
+            }
+          })
+
+          const errorResponse = response.text();
+          throw new Error(errorResponse);
+        })
+        .then(data => {
+          isLoading = false
+          dispatch({
+            type: actionTypes.LOAD_PODCASTS,
+            payload: {
+                response: JSON.parse(data?.contents)?.feed?.entry,
+                isLoading,
+                isError: false,
+                timestamp: Date.now()
+            }
+          })
+        })
   } catch (error) {
         console.error(error)
         isLoading = false
