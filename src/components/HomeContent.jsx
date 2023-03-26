@@ -14,7 +14,7 @@ function HomeContent({podcasts}) {
         const filteredPodcasts = podcasts?.podcastsList?.response?.filter(podcast => (
             podcast?.title?.label.toLowerCase().includes(filter) || podcast['im:artist'].label.toLowerCase().includes(filter)
         ))
-        setResults(filteredPodcasts.length)
+        setResults(filteredPodcasts?.length)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[JSON.stringify([podcasts, filter])])
 
