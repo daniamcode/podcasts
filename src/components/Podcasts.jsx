@@ -5,6 +5,7 @@ import { loadPodcastsDetails } from '../redux/actions/podcastActions';
 import Dashboard from './Dashboard';
 import EpisodesList from './EpisodesList';
 import "../styles/Podcasts.css";
+import { setFlag } from '../redux/actions/flagActions';
 
 function Podcasts() {
   const { podcastId } = useParams();
@@ -15,6 +16,16 @@ function Podcasts() {
   const [podcastIndex, setPodcastIndex] = useState(null)
 
   console.log(podcasts?.podcastsDetails[podcastIndex]?.response)
+
+  useEffect(() => {
+    dispatch(setFlag(false))
+    return ()=> {
+        // we add 500ms because the transition is so fast that is difficult to see the flag change
+        setTimeout(()=> {
+            dispatch(setFlag(true))
+        }, 500)
+    }
+}, [dispatch]);
 
   useEffect(()=> {
     setPodcastIndex(podcasts?.podcastsDetails?.findIndex(el => el?.id === podcastId))
@@ -29,22 +40,24 @@ function Podcasts() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, mountedDate, podcastIndex, JSON.stringify([timer.period, podcasts?.podcastsDetails[podcastIndex]?.response, podcasts?.podcastsDetails[podcastIndex]?.timestamp])])
 
-  
   return (
     <div className='podcasts'>
-      <Dashboard
-        podcastId={podcastId}
-        podcasts={podcasts} 
-        podcastIndex={podcastIndex}
-        >
-        <EpisodesList
-          podcastId={podcastId}
-          podcasts={podcasts} 
-          podcastIndex={podcastIndex}
-        />
-      </Dashboard>
+      {!podcasts?.podcastsDetails[podcastIndex] 
+        ? <h3>Is loading...</h3>
+        : <Dashboard
+            podcastId={podcastId}
+            podcasts={podcasts} 
+            podcastIndex={podcastIndex}
+            >
+            <EpisodesList
+              podcastId={podcastId}
+              podcasts={podcasts} 
+              podcastIndex={podcastIndex}
+            />
+          </Dashboard>
+      }
     </div>
-  );
+  )
 }
 
 export default Podcasts;

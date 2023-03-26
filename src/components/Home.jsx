@@ -3,12 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { loadPodcasts } from "../redux/actions/podcastActions";
 import ListElement from "./ListElement";
+import { setFlag } from "../redux/actions/flagActions";
 
 function Home() {
     const dispatch = useDispatch()
     const { podcasts, timer } = useSelector(state => state)
     const [mountedDate] = useState(Date.now())
 
+    useEffect(() => {
+        dispatch(setFlag(false))
+        return ()=> {
+            // we add 500ms because the transition is so fast that is difficult to see the flag change
+            setTimeout(()=> {
+                dispatch(setFlag(true))
+            }, 500)
+        }
+    }, [dispatch]);
   
     useEffect(()=> {
         // only dispatch the first time and then just if coming back after timer.period 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { setFlag } from '../redux/actions/flagActions';
 import { loadPodcastsDetails } from '../redux/actions/podcastActions';
 import Dashboard from './Dashboard';
 import EpisodesDetail from './EpisodesDetail';
@@ -14,6 +15,16 @@ function Episode() {
   const [podcastIndex, setPodcastIndex] = useState(null)
 
   console.log(podcasts?.podcastsDetails[podcastIndex]?.response)
+
+  useEffect(() => {
+    dispatch(setFlag(false))
+    return ()=> {
+      // we add 500ms because the transition is so fast that is difficult to see the flag change
+        setTimeout(()=> {
+            dispatch(setFlag(true))
+        }, 500)
+    }
+}, [dispatch]);
 
   useEffect(()=> {
     setPodcastIndex(podcasts?.podcastsDetails?.findIndex(el => el?.id === podcastId))
