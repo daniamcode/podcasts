@@ -5,7 +5,7 @@ function Dashboard({podcastId, podcasts, podcastIndex, children}) {
   return (
     <div className='dashboard'>
       <div className='sidebar'>
-        <Link to={`/podcast/${podcastId}`} >
+        <Link to={`/podcast/${podcastId}`} className={'podcast-cover-container'}>
           <img src={podcasts?.podcastsDetails[podcastIndex]?.response[0]?.artworkUrl100} alt={podcasts?.podcastsDetails[podcastIndex]?.response?.collectionName} className='podcast-cover'></img>
         </Link>
         <p>
