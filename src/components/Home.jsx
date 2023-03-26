@@ -2,8 +2,8 @@ import "../styles/Home.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { loadPodcasts } from "../redux/actions/podcastActions";
-import ListElement from "./ListElement";
 import { setFlag } from "../redux/actions/flagActions";
+import HomeContent from "./HomeContent";
 
 function Home() {
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ function Home() {
         <div className='home'>
             {podcasts?.podcastsList?.isLoading 
                 ? <h3>Is loading...</h3> 
-                : podcasts?.podcastsList?.response?.map(podcast => <ListElement podcast={podcast}/>)
+                : <HomeContent podcasts={podcasts}/>
             }
         </div>
     )

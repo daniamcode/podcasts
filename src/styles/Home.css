@@ -1,9 +1,38 @@
-.home {
+.home {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+}
+.home-content {
+    display: flex;
+    flex-direction: column;
+}
+.filter-container {
+    display: flex;
+    margin: 1rem 7rem;
+    width: 15rem;
+    align-self: flex-end;
+    gap: 1rem;
+}
+.podcasts-number {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    min-width: 2rem;
+    overflow: auto;
+    text-align: center;
+}
+.filter {
+    padding: 5px;
+}
+.home-list {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 3rem;
 }
 .list-element {
     display: flex;

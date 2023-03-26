@@ -21,3 +21,4 @@ I ASSUME THE FIRST RESULT IS THE DETAIL FOR THE PODCAST AND THE FOLLOWING ONES A
 12) add Sidebar that will be common for podcasts and episodes
 13) add episode details
 14) fix flag on navigation
+15) add filter/search
