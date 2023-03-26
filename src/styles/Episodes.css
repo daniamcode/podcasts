@@ -1,0 +1,19 @@
+.episodes-detail {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+.episodes-detail-trackname {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.episodes-detail-description {
+    margin: 2rem 0;
+    max-height: 40vh;
+    overflow: auto;
+}
+.episodes-detail-audio {
+    align-self: center;
+}

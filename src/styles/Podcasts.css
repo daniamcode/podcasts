@@ -1,3 +1,23 @@
+.podcasts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+.episodes-list-container {
+    display: flex;
+    flex-direction: column;
+}
+.episodes-counter {
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    height: fit-content;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 .episodes-list {
     display: flex;
     flex-direction: column;

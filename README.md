@@ -22,3 +22,4 @@ I ASSUME THE FIRST RESULT IS THE DETAIL FOR THE PODCAST AND THE FOLLOWING ONES A
 13) add episode details
 14) fix flag on navigation
 15) add filter/search
+16) improve styles
