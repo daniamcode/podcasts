@@ -23,3 +23,4 @@ I ASSUME THE FIRST RESULT IS THE DETAIL FOR THE PODCAST AND THE FOLLOWING ONES A
 14) fix flag on navigation
 15) add filter/search
 16) improve styles
+17) add some tests (see podcastActions.test.js and podcastsReducer.test.js). To try: npm run test
